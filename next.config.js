@@ -1,12 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/danieliofin.com' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/danieliofin.com/' : '',
-  trailingSlash: true,
-  images: {
-    unoptimized: true
-  }
-}
+  basePath: '/danieliofin.com', // Adjust to match your GitHub Pages repo
+  assetPrefix: '/danieliofin.com/',
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
