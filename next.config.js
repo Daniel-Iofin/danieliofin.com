@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove deprecated experimental.appDir option
+  output: 'export',
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig
