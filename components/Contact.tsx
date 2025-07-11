@@ -2,8 +2,17 @@
 
 import { motion } from 'framer-motion'
 import { Mail, Github, Linkedin, Twitter, Send } from 'lucide-react'
+import { useState } from 'react'
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
   const socialLinks = [
     {
       name: 'GitHub',
@@ -26,6 +35,41 @@ const Contact = () => {
       icon: Mail
     }
   ]
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('https://formspree.io/f/mvgrelln', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <section id="contact" className="section-padding bg-gray-900/20">
@@ -82,7 +126,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                   Name
@@ -91,6 +135,9 @@ const Contact = () => {
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors duration-200"
                   placeholder="Your name"
                 />
@@ -104,6 +151,9 @@ const Contact = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors duration-200"
                   placeholder="your.email@example.com"
                 />
@@ -116,18 +166,34 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
                   rows={5}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors duration-200 resize-none"
                   placeholder="Your message..."
                 />
               </div>
               
+              {submitStatus === 'success' && (
+                <div className="p-3 bg-green-500/20 border border-green-500/50 rounded-lg text-green-400">
+                  Message sent successfully!
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400">
+                  Failed to send message. Please try again.
+                </div>
+              )}
+              
               <button
                 type="submit"
-                className="flex items-center justify-center w-full px-6 py-3 bg-primary hover:bg-blue-600 text-white font-medium rounded-lg transition-colors duration-200"
+                disabled={isSubmitting}
+                className="flex items-center justify-center w-full px-6 py-3 bg-primary hover:bg-blue-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors duration-200"
               >
                 <Send size={20} className="mr-2" />
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </motion.div>
