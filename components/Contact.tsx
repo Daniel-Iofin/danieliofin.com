@@ -7,12 +7,12 @@ const Contact = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/danieliofin',
+      url: 'https://github.com/Daniel-Iofin',
       icon: Github
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/danieliofin',
+      url: 'https://linkedin.com/in/daniel-iofin',
       icon: Linkedin
     },
     {
@@ -22,7 +22,7 @@ const Contact = () => {
     },
     {
       name: 'Email',
-      url: 'mailto:daniel@danieliofin.com',
+      url: 'mailto:hi@danieliofin.com',
       icon: Mail
     }
   ]
