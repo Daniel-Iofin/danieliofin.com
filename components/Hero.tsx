@@ -46,7 +46,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <a
-              href="https://github.com/danieliofin"
+              href="https://github.com/Daniel-Iofin"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors duration-200"

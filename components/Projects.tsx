@@ -10,7 +10,7 @@ const Projects = () => {
       description: 'A full-stack e-commerce platform built with Next.js, featuring user authentication, payment processing, and admin dashboard.',
       image: '/api/placeholder/400/250',
       technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL', 'Tailwind CSS'],
-      github: 'https://github.com/danieliofin/ecommerce',
+      github: 'https://github.com/Daniel-Iofin/ecommerce',
       live: 'https://ecommerce-demo.com',
       category: 'web'
     },
@@ -19,7 +19,7 @@ const Projects = () => {
       description: 'A collaborative task management application with real-time updates, team collaboration, and progress tracking.',
       image: '/api/placeholder/400/250',
       technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'Express'],
-      github: 'https://github.com/danieliofin/task-manager',
+      github: 'https://github.com/Daniel-Iofin/task-manager',
       live: 'https://task-manager-demo.com',
       category: 'web'
     },
@@ -28,7 +28,7 @@ const Projects = () => {
       description: 'A cross-platform mobile app for tracking workouts, nutrition, and fitness goals with data visualization.',
       image: '/api/placeholder/400/250',
       technologies: ['React Native', 'Firebase', 'Redux', 'Chart.js', 'Expo'],
-      github: 'https://github.com/danieliofin/fitness-app',
+      github: 'https://github.com/Daniel-Iofin/fitness-app',
       live: null,
       category: 'mobile'
     },
@@ -37,7 +37,7 @@ const Projects = () => {
       description: 'A weather application with location-based forecasts, interactive maps, and historical data visualization.',
       image: '/api/placeholder/400/250',
       technologies: ['Vue.js', 'OpenWeather API', 'Chart.js', 'Vuex', 'CSS Grid'],
-      github: 'https://github.com/danieliofin/weather-app',
+      github: 'https://github.com/Daniel-Iofin/weather-app',
       live: 'https://weather-dashboard.com',
       category: 'web'
     }

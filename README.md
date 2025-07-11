@@ -25,7 +25,7 @@ A modern, responsive personal website built with Next.js and Tailwind CSS, featu
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/danieliofin/danieliofin.com.git
+git clone https://github.com/Daniel-Iofin/danieliofin.com.git
 cd danieliofin.com
 ```
 
@@ -126,7 +126,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📞 Contact
 
 - **Email**: daniel@danieliofin.com
-- **GitHub**: [@danieliofin](https://github.com/danieliofin)
+- **GitHub**: [@danieliofin](https://github.com/Daniel-Iofin)
 - **LinkedIn**: [Daniel Iofin](https://linkedin.com/in/daniel-iofin)
 
 ---
