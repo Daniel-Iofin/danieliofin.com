@@ -127,7 +127,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - **Email**: daniel@danieliofin.com
 - **GitHub**: [@danieliofin](https://github.com/danieliofin)
-- **LinkedIn**: [Daniel Iofin](https://linkedin.com/in/danieliofin)
+- **LinkedIn**: [Daniel Iofin](https://linkedin.com/in/daniel-iofin)
 
 ---
 
