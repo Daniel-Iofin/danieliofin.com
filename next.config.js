@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/danieliofin.com',
-  assetPrefix: '/danieliofin.com/',
+  basePath: '',
+  assetPrefix: '',
 };
 
 module.exports = nextConfig;
