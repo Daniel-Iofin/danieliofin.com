@@ -96,7 +96,14 @@ colors: {
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### GitHub Pages (Current Setup)
+This project is configured to deploy automatically to GitHub Pages:
+
+1. **Automatic Deployment**: The site deploys automatically when you push to the `main` branch
+2. **Manual Deployment**: Run `npm run deploy` to build and deploy manually
+3. **Build**: Run `npm run build:static` to build for static hosting
+
+### Vercel (Alternative)
 1. Push your code to GitHub
 2. Connect your repository to Vercel
 3. Deploy automatically
