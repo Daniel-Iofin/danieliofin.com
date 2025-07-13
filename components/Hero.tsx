@@ -36,7 +36,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Software engineer, student, and athlete based out of New York City
+            Software engineer, tutor, and athlete based out of New York City
           </motion.p>
           
           <motion.div 

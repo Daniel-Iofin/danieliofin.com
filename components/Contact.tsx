@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Github, Linkedin, Twitter, Send } from 'lucide-react'
+import { Mail, Github, Linkedin, Twitter, Send, Instagram } from 'lucide-react'
 import { useState } from 'react'
 
 const Contact = () => {
@@ -28,6 +28,11 @@ const Contact = () => {
       name: 'Twitter',
       url: 'https://twitter.com/danieliofin',
       icon: Twitter
+    },
+    {
+      name: 'Instagram',
+      url: 'https://instagram.com/daniel.e.io',
+      icon: Instagram
     },
     {
       name: 'Email',
