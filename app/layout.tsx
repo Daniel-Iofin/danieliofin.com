@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Daniel Iofin - Software Engineer',
-  description: 'Software engineer passionate about building exceptional digital experiences.',
+  description: 'Software engineer, tutor, and athlete based in New York City.',
   icons: {
     icon: [
       { url: '/favicon.ico' },
