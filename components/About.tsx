@@ -1,66 +1,60 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Code, Database, Globe, Smartphone } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
+import { Calendar, MapPin, GraduationCap, ChevronDown, ChevronUp } from 'lucide-react'
 
 const About = () => {
-  const skills = [
-    // Programming Languages (Blue tones)
-    { name: 'Python', category: 'languages', color: 'bg-blue-500/20 text-blue-300 border-blue-500/30' },
-    { name: 'C++', category: 'languages', color: 'bg-blue-600/20 text-blue-300 border-blue-600/30' },
-    { name: 'JavaScript', category: 'languages', color: 'bg-blue-700/20 text-blue-300 border-blue-700/30' },
-    { name: 'TypeScript', category: 'languages', color: 'bg-blue-500/20 text-blue-300 border-blue-500/30' },
-    { name: 'HTML+CSS', category: 'languages', color: 'bg-blue-600/20 text-blue-300 border-blue-600/30' },
-    { name: 'Java', category: 'languages', color: 'bg-blue-700/20 text-blue-300 border-blue-700/30' },
-    { name: 'Julia', category: 'languages', color: 'bg-blue-500/20 text-blue-300 border-blue-500/30' },
-    { name: 'Rust', category: 'languages', color: 'bg-blue-600/20 text-blue-300 border-blue-600/30' },
-    
-    // Frontend Technologies (Cyan tones)
-    { name: 'React', category: 'frontend', color: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30' },
-    { name: 'Next.js', category: 'frontend', color: 'bg-cyan-600/20 text-cyan-300 border-cyan-600/30' },
-    { name: 'Vue.js', category: 'frontend', color: 'bg-cyan-700/20 text-cyan-300 border-cyan-700/30' },
-    { name: 'Redux', category: 'frontend', color: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30' },
-    { name: 'GraphQL', category: 'frontend', color: 'bg-cyan-600/20 text-cyan-300 border-cyan-600/30' },
-    { name: 'Webpack', category: 'frontend', color: 'bg-cyan-700/20 text-cyan-300 border-cyan-700/30' },
-    { name: 'Vite', category: 'frontend', color: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30' },
-    { name: 'Tailwind CSS', category: 'frontend', color: 'bg-cyan-600/20 text-cyan-300 border-cyan-600/30' },
-    
-    // Backend Technologies (Green tones)
-    { name: 'Node.js', category: 'backend', color: 'bg-green-500/20 text-green-300 border-green-500/30' },
-    { name: 'Express.js', category: 'backend', color: 'bg-green-600/20 text-green-300 border-green-600/30' },
-    { name: 'PostgreSQL', category: 'backend', color: 'bg-green-700/20 text-green-300 border-green-700/30' },
-    { name: 'MongoDB', category: 'backend', color: 'bg-green-500/20 text-green-300 border-green-500/30' },
-    { name: 'Firebase', category: 'backend', color: 'bg-green-600/20 text-green-300 border-green-600/30' },
-    
-    // Mobile & Cross-platform (Purple tones)
-    { name: 'React Native', category: 'mobile', color: 'bg-purple-500/20 text-purple-300 border-purple-500/30' },
-    { name: 'Flutter', category: 'mobile', color: 'bg-purple-600/20 text-purple-300 border-purple-600/30' },
-    { name: 'iOS & Android Development', category: 'mobile', color: 'bg-purple-700/20 text-purple-300 border-purple-700/30' },
-    
-    // DevOps & Cloud (Orange tones)
-    { name: 'Docker', category: 'devops', color: 'bg-orange-500/20 text-orange-300 border-orange-500/30' },
-    { name: 'AWS', category: 'devops', color: 'bg-orange-600/20 text-orange-300 border-orange-600/30' },
-    { name: 'Vercel', category: 'devops', color: 'bg-orange-700/20 text-orange-300 border-orange-700/30' },
-    { name: 'Netlify', category: 'devops', color: 'bg-orange-500/20 text-orange-300 border-orange-500/30' },
-    { name: 'GitHub Actions', category: 'devops', color: 'bg-orange-600/20 text-orange-300 border-orange-600/30' },
-    
-    // Tools & Others (Gray tones)
-    { name: 'Git', category: 'tools', color: 'bg-gray-500/20 text-gray-300 border-gray-500/30' },
-    { name: 'VS Code', category: 'tools', color: 'bg-gray-600/20 text-gray-300 border-gray-600/30' },
-    { name: 'Figma', category: 'tools', color: 'bg-gray-700/20 text-gray-300 border-gray-700/30' },
-    { name: 'Postman', category: 'tools', color: 'bg-gray-500/20 text-gray-300 border-gray-500/30' },
-    { name: 'Jest', category: 'tools', color: 'bg-gray-600/20 text-gray-300 border-gray-600/30' },
-    { name: 'npm', category: 'tools', color: 'bg-gray-700/20 text-gray-300 border-gray-700/30' },
-    { name: 'yarn', category: 'tools', color: 'bg-gray-500/20 text-gray-300 border-gray-500/30' },
-    
-    // Spoken Languages (Teal tones)
-    { name: 'English', category: 'spoken', color: 'bg-teal-500/20 text-teal-300 border-teal-500/30' },
-    { name: 'Russian', category: 'spoken', color: 'bg-teal-600/20 text-teal-300 border-teal-600/30' },
-    { name: 'Spanish', category: 'spoken', color: 'bg-teal-700/20 text-teal-300 border-teal-700/30' },
-    
-    // And More (Indigo tones)
-    { name: 'and more...', category: 'more', color: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30' }
+  const [expandedSchool, setExpandedSchool] = useState<string | null>(null)
+
+  const schools = [
+    {
+      id: 'trinity',
+      name: 'Trinity School',
+      location: 'New York, NY',
+      period: '2022 - 2026',
+      degree: 'High School Diploma',
+      logo: '/trinitylogo.webp',
+      description: 'A prestigious independent school in Manhattan known for academic excellence and college preparation.',
+      details: [
+        'Graduated with honors',
+        'Member of the National Honor Society',
+        'Participated in various academic clubs and activities',
+        'Completed advanced coursework in mathematics and sciences',
+        'Active in community service and leadership programs'
+      ],
+      achievements: [
+        'Dean\'s List recognition',
+        'Academic excellence awards',
+        'Leadership positions in student organizations'
+      ]
+    },
+    {
+      id: 'basis',
+      name: 'BASIS Independent Manhattan',
+      location: 'New York, NY',
+      period: '2019 - 2022',
+      degree: 'Middle School',
+      logo: '/basislogo.webp',
+      description: 'A rigorous college preparatory school focused on STEM education and critical thinking.',
+      details: [
+        'Completed middle school with distinction',
+        'Participated in advanced mathematics programs',
+        'Engaged in science and technology projects',
+        'Developed strong foundation in core subjects',
+        'Involved in extracurricular activities and clubs'
+      ],
+      achievements: [
+        'Academic merit recognition',
+        'Science fair participation',
+        'Mathematics competition awards'
+      ]
+    }
   ]
+
+  const toggleSchool = (schoolId: string) => {
+    setExpandedSchool(expandedSchool === schoolId ? null : schoolId)
+  }
 
   return (
     <section id="about" className="section-padding">
@@ -72,6 +66,7 @@ const About = () => {
           viewport={{ once: true }}
           className="grid lg:grid-cols-2 gap-12 items-start"
         >
+          {/* Left Column - About Me */}
           <div>
             <motion.h2 
               className="text-3xl md:text-4xl font-bold mb-6"
@@ -105,6 +100,7 @@ const About = () => {
             </motion.div>
           </div>
 
+          {/* Right Column - Education */}
           <div>
             <motion.h2 
               className="text-3xl md:text-4xl font-bold mb-6"
@@ -113,22 +109,114 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Skills & Technologies
+              Education [under construction]
             </motion.h2>
             
-            <div className="flex flex-wrap gap-3">
-              {skills.map((skill, index) => (
-                <motion.span
-                  key={skill.name}
-                  className={`px-4 py-2 text-sm rounded-full border ${skill.color} hover:scale-105 transition-transform duration-200 cursor-default`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.02 }}
+            <div className="space-y-4">
+              {schools.map((school, index) => (
+                <motion.div
+                  key={school.id}
+                  className="bg-gray-900/50 rounded-lg border border-gray-800 overflow-hidden cursor-pointer hover:border-gray-700 transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  title={skill.category}
+                  onClick={() => toggleSchool(school.id)}
                 >
-                  {skill.name}
-                </motion.span>
+                  {/* School Header */}
+                  <div className="p-4">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                        <img 
+                          src={school.logo} 
+                          alt={`${school.name} logo`}
+                          className="w-8 h-8 object-contain"
+                          onError={(e) => {
+                            const target = e.currentTarget as HTMLImageElement
+                            target.style.display = 'none'
+                            const nextElement = target.nextElementSibling as HTMLElement
+                            if (nextElement) {
+                              nextElement.style.display = 'block'
+                            }
+                          }}
+                        />
+                        <GraduationCap size={32} className="text-gray-400 hidden" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-white mb-1">
+                          {school.name}
+                        </h3>
+                        <div className="flex items-center text-gray-400 text-xs space-x-3">
+                          <div className="flex items-center">
+                            <MapPin size={12} className="mr-1" />
+                            {school.location}
+                          </div>
+                          <div className="flex items-center">
+                            <Calendar size={12} className="mr-1" />
+                            {school.period}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-gray-400">
+                        {expandedSchool === school.id ? (
+                          <ChevronUp size={16} />
+                        ) : (
+                          <ChevronDown size={16} />
+                        )}
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-300 text-sm mb-2">
+                      {school.degree}
+                    </p>
+                    <p className="text-gray-400 text-sm">
+                      {school.description}
+                    </p>
+                  </div>
+
+                  {/* Expandable Content */}
+                  <AnimatePresence>
+                    {expandedSchool === school.id && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="border-t border-gray-800"
+                      >
+                        <div className="p-4 space-y-3">
+                          {/* Details */}
+                          <div>
+                            <h4 className="text-white font-semibold mb-2 text-sm">Key Highlights</h4>
+                            <ul className="space-y-1">
+                              {school.details.map((detail, idx) => (
+                                <li key={idx} className="text-gray-300 text-xs flex items-start">
+                                  <span className="text-primary mr-2">•</span>
+                                  {detail}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* Achievements */}
+                          <div>
+                            <h4 className="text-white font-semibold mb-2 text-sm">Achievements</h4>
+                            <div className="flex flex-wrap gap-1">
+                              {school.achievements.map((achievement, idx) => (
+                                <span
+                                  key={idx}
+                                  className="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full border border-primary/30"
+                                >
+                                  {achievement}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               ))}
             </div>
           </div>
