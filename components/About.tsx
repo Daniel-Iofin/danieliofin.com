@@ -4,8 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { Calendar, MapPin, GraduationCap, ChevronDown, ChevronUp } from 'lucide-react'
 
+// Utility to slugify names for linking
+const slugify = (str: string) =>
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .substring(0, 40)
+
 const About = () => {
   const [expandedSchool, setExpandedSchool] = useState<string | null>(null)
+  const [hoveredSlug, setHoveredSlug] = useState<string | null>(null)
 
   const schools = [
     {
@@ -40,16 +51,16 @@ const About = () => {
         ]
       },
       leadership: [
-        'Water Polo Captain (1 year)',
-        'TrinLabs Project Manager (1 year), Head of Development (1 year), President (1 year)',
-        'HackTrin VP of Education (1 year), President (1 year)',
-        'Book Club President (1 year)',
-        'Project Rousseau Founder and President (3 years)',
-        'Competitive Coding Club President (1 year)',
-        'Enigma President (2 years)',
-        'Upper School Math Tutors President (2 years)',
-        'Upper School CS Tutors Founder and President (2 years)',
-        'Slavic Affairs Club President (2 years)'
+        'Water Polo: Captain (1 year)',
+        'TrinLabs: Project Manager (1 year), Head of Development (1 year), President (1 year)',
+        'HackTrin: VP of Education (1 year), President (1 year)',
+        'Book Club: President (1 year)',
+        'Project Rousseau: Founder and President (3 years)',
+        'Competitive Coding Club: President (1 year)',
+        'Enigma: President (2 years)',
+        'Upper School Math Tutors: President (2 years)',
+        'Upper School CS Tutors: Founder and President (2 years)',
+        'Slavic Affairs Club: President (2 years)'
       ],
       projects: [
         {
@@ -262,14 +273,28 @@ const About = () => {
                                   <div>
                                     <h5 className="text-gray-300 font-medium mb-2 text-sm">Sports</h5>
                                     <div className="flex flex-wrap gap-2">
-                                      {school.extracurriculars.sports.map((activity, idx) => (
-                                        <span
-                                          key={idx}
-                                          className="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-lg border border-gray-700 hover:bg-gray-700 transition-colors duration-200"
-                                        >
-                                          {activity}
-                                        </span>
-                                      ))}
+                                      {school.extracurriculars.sports.map((activity, idx) => {
+                                        const tagSlug = slugify(activity)
+                                        // Find leadership items that match this sport
+                                        const relatedIds = school.leadership
+                                          .map((role, lidx) => ({
+                                            slug: slugify(role.split(':')[0]),
+                                            id: `lead-${slugify(role.split(':')[0])}-${lidx}`
+                                          }))
+                                          .filter(r => r.slug === tagSlug)
+                                          .map(r => r.id)
+
+                                        return (
+                                          <span
+                                            key={idx}
+                                            onMouseEnter={() => setHoveredSlug(tagSlug)}
+                                            onMouseLeave={() => setHoveredSlug(null)}
+                                            className={`px-3 py-1 rounded-lg border text-sm transition-colors duration-200 ${hoveredSlug === tagSlug ? 'bg-primary/20 text-primary border-primary/30' : 'bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700'}`}
+                                          >
+                                            {activity}
+                                          </span>
+                                        )
+                                      })}
                                     </div>
                                   </div>
                                 )}
@@ -279,14 +304,27 @@ const About = () => {
                                   <div>
                                     <h5 className="text-gray-300 font-medium mb-2 text-sm">Clubs & Organizations</h5>
                                     <div className="flex flex-wrap gap-2">
-                                      {school.extracurriculars.clubs.map((activity, idx) => (
-                                        <span
-                                          key={idx}
-                                          className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-lg border border-primary/20 hover:bg-primary/20 transition-colors duration-200"
-                                        >
-                                          {activity}
-                                        </span>
-                                      ))}
+                                      {school.extracurriculars.clubs.map((activity, idx) => {
+                                        const tagSlug = slugify(activity)
+                                        const relatedIds = school.leadership
+                                          .map((role, lidx) => ({
+                                            slug: slugify(role.split(':')[0]),
+                                            id: `lead-${slugify(role.split(':')[0])}-${lidx}`
+                                          }))
+                                          .filter(r => r.slug === tagSlug)
+                                          .map(r => r.id)
+
+                                        return (
+                                          <span
+                                            key={idx}
+                                            onMouseEnter={() => setHoveredSlug(tagSlug)}
+                                            onMouseLeave={() => setHoveredSlug(null)}
+                                            className={`px-3 py-1 rounded-lg border text-sm transition-colors duration-200 ${hoveredSlug === tagSlug ? 'bg-primary/20 text-primary border-primary/30' : 'bg-primary/10 text-primary border-primary/20 hover:bg-primary/20'}`}
+                                          >
+                                            {activity}
+                                          </span>
+                                        )
+                                      })}
                                     </div>
                                   </div>
                                 )}
@@ -302,11 +340,21 @@ const About = () => {
                                 Leadership & Service
                               </h4>
                               <div className="space-y-2">
-                                {school.leadership.map((role, idx) => (
-                                  <div key={idx} className="text-gray-300 text-sm p-2 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors duration-200">
-                                    • {role}
-                                  </div>
-                                ))}
+                                {school.leadership.map((role, idx) => {
+                                  const leadershipSlug = slugify(role.split(':')[0])
+                                  const leadId = `lead-${leadershipSlug}-${idx}`
+
+                                  return (
+                                    <div
+                                      key={idx}
+                                      onMouseEnter={() => setHoveredSlug(leadershipSlug)}
+                                      onMouseLeave={() => setHoveredSlug(null)}
+                                      className={`text-sm p-2 rounded-lg transition-colors duration-200 ${hoveredSlug === leadershipSlug ? 'bg-primary/20 text-white' : 'text-gray-300 bg-gray-800/30 hover:bg-gray-800/50'}`}
+                                    >
+                                      {role}
+                                    </div>
+                                  )
+                                })}
                               </div>
                             </div>
                           )}
@@ -361,8 +409,8 @@ const About = () => {
                               </div>
                             </div>
                           )}
-                        </div>
-                      </motion.div>
+                          </div>
+                        </motion.div>
                     )}
                   </AnimatePresence>
                 </motion.div>
