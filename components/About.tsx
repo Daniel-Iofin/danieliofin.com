@@ -115,14 +115,14 @@ const About = () => {
       gpa: '4.2',
       awards: [
         {
-          title: "90's Award",
-          period: '2019-2022',
-          description: 'Received 9 times for having an average above 90%'
-        },
-        {
           title: 'Honor Roll',
           period: '2019-2022',
           description: 'Recieved 7 times for being one of the top 10% of students in the school'
+        },
+        {
+          title: "90's Award",
+          period: '2019-2022',
+          description: 'Received 9 times for having an average above 90%'
         },
         {
           title: 'Pre-Calculus Award',
