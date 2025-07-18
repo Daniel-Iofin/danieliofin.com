@@ -112,7 +112,34 @@ const About = () => {
       degree: 'Middle School',
       logo: '/basislogo.webp',
       description: 'A rigorous college preparatory school focused on STEM education and critical thinking.',
-      gpa: '4.2'
+      gpa: '4.2',
+      awards: [
+        {
+          title: "90's Award",
+          period: '2019-2022',
+          description: 'Received 9 times for having an average above 90%'
+        },
+        {
+          title: 'Honor Roll',
+          period: '2019-2022',
+          description: 'Recieved 7 times for being one of the top 10% of students in the school'
+        },
+        {
+          title: 'Pre-Calculus Award',
+          period: '2022',
+          description: 'Recognition for excellence in Pre-Calculus'
+        },
+        {
+          title: 'Physics Award',
+          period: '2022',
+          description: 'Recognition for excellence in Physics'
+        },
+        {
+          title: 'Chemistry Award',
+          period: '2022',
+          description: 'Recognition for excellence in Chemistry'
+        }
+      ]
     }
   ]
 
