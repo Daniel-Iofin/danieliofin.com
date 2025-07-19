@@ -86,7 +86,7 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Get In Touch
+          <span className="gradient-text">Get In Touch</span>
         </motion.h2>
 
         <div className="grid lg:grid-cols-2 gap-12">

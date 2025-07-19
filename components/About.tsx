@@ -184,7 +184,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              About Me
+              <span className='gradient-text'>About Me</span>
             </motion.h2>
             
             <motion.div 
@@ -218,7 +218,7 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Education
+              <span className="gradient-text">Education</span>
             </motion.h2>
             
             <div className="space-y-4">
