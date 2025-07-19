@@ -144,7 +144,25 @@ const About = () => {
   ]
 
   const toggleSchool = (schoolId: string) => {
+    const isOpening = expandedSchool !== schoolId
+    const wasExpanded = expandedSchool !== null
     setExpandedSchool(expandedSchool === schoolId ? null : schoolId)
+    
+    // If opening a school, scroll it to the top after animation completes
+    if (isOpening) {
+      const delay = wasExpanded ? 300 : 50 // Faster timing
+      setTimeout(() => {
+        const element = document.querySelector(`[data-school-id="${schoolId}"]`)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          const offset = 120 // Scroll higher up
+          window.scrollTo({
+            top: window.scrollY + rect.top - offset,
+            behavior: 'smooth'
+          })
+        }
+      }, delay)
+    }
   }
 
   return (
@@ -207,6 +225,7 @@ const About = () => {
               {schools.map((school, index) => (
                 <motion.div
                   key={school.id}
+                  data-school-id={school.id}
                   className="bg-gray-900/50 rounded-lg border border-gray-800 overflow-hidden cursor-pointer hover:border-gray-700 transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
