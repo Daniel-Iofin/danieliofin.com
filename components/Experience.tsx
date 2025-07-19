@@ -5,39 +5,21 @@ import { Calendar, MapPin, ExternalLink } from 'lucide-react'
 
 const Experience = () => {
   const experiences = [
-    {
-      title: 'Senior Software Engineer',
-      company: 'TechCorp',
-      location: 'San Francisco, CA',
-      period: '2022 - Present',
-      description: 'Leading development of scalable web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.',
-      technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'PostgreSQL'],
-      link: 'https://techcorp.com'
-    },
-    {
-      title: 'Full Stack Developer',
-      company: 'StartupXYZ',
-      location: 'Remote',
-      period: '2020 - 2022',
-      description: 'Built and maintained multiple web applications from concept to deployment. Collaborated with cross-functional teams to deliver high-quality products.',
-      technologies: ['Next.js', 'Python', 'MongoDB', 'Docker', 'Figma'],
-      link: 'https://startupxyz.com'
-    },
-    {
-      title: 'Frontend Developer',
-      company: 'Digital Agency',
+    {/*{
+      title: 'Software Engineer Intern',
+      company: 'Point One',
       location: 'New York, NY',
-      period: '2018 - 2020',
-      description: 'Developed responsive websites and web applications for various clients. Focused on performance optimization and user experience.',
-      technologies: ['React', 'Vue.js', 'Sass', 'Webpack', 'Git'],
-      link: 'https://digitalagency.com'
-    }
+      period: 'Summer 2025',
+      description: 'Developed analytics dashboard to measure customer engagement',
+      technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'PostgreSQL', 'Python', 'Flask'],
+      link: 'https://pointone.com'
+    },*/}
   ]
 
   return (
     <section id="experience" className="section-padding bg-gray-900/20">
       <div className="container-max">
-        <motion.h2 
+        {/*<motion.h2 
           className="text-3xl md:text-4xl font-bold text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -103,6 +85,7 @@ const Experience = () => {
             </motion.div>
           ))}
         </div>
+        */}
       </div>
     </section>
   )

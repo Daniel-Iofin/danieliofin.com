@@ -3,44 +3,36 @@
 import { motion } from 'framer-motion'
 import { Github, ExternalLink, Globe, Smartphone, Database } from 'lucide-react'
 
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  live: string | null;
+  github: string | null;
+  category: string;
+}
+
 const Projects = () => {
-  const projects = [
+  const projects : Project[] = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce platform built with Next.js, featuring user authentication, payment processing, and admin dashboard.',
+      title: 'Club Management Platform',
+      description: 'Developed my high school\'s first all-in-one club management platform.  Manages 150+ clubs, sends 10,000+ emails per month, and handles 100,000+ API requests per month.',
       image: '/api/placeholder/400/250',
-      technologies: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL', 'Tailwind CSS'],
-      github: 'https://github.com/Daniel-Iofin/ecommerce',
-      live: 'https://ecommerce-demo.com',
+      technologies: ['Next.js', 'TypeScript', 'Flask', 'PostgreSQL', 'Tailwind CSS', 'Node.js'],
+      live: 'https://hub.trinlabs.com',
+      github: null,
       category: 'web'
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, team collaboration, and progress tracking.',
+      title: 'Sticker Tag',
+      description: 'Reengineered an existing community building site to be maintainable and scalable.',
       image: '/api/placeholder/400/250',
-      technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'Express'],
-      github: 'https://github.com/Daniel-Iofin/task-manager',
-      live: 'https://task-manager-demo.com',
+      technologies: ['Next.js', 'TypeScript', 'Flask', 'PostgreSQL', 'Tailwind CSS', 'Node.js'],
+      live: 'https://www.trinitystickertag.com',
+      github: null,
       category: 'web'
     },
-    {
-      title: 'Fitness Tracking Mobile App',
-      description: 'A cross-platform mobile app for tracking workouts, nutrition, and fitness goals with data visualization.',
-      image: '/api/placeholder/400/250',
-      technologies: ['React Native', 'Firebase', 'Redux', 'Chart.js', 'Expo'],
-      github: 'https://github.com/Daniel-Iofin/fitness-app',
-      live: null,
-      category: 'mobile'
-    },
-    {
-      title: 'Weather Dashboard',
-      description: 'A weather application with location-based forecasts, interactive maps, and historical data visualization.',
-      image: '/api/placeholder/400/250',
-      technologies: ['Vue.js', 'OpenWeather API', 'Chart.js', 'Vuex', 'CSS Grid'],
-      github: 'https://github.com/Daniel-Iofin/weather-app',
-      live: 'https://weather-dashboard.com',
-      category: 'web'
-    }
   ]
 
   const getCategoryIcon = (category: string) => {
@@ -80,8 +72,18 @@ const Projects = () => {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                  <CategoryIcon className="w-16 h-16 text-gray-600" />
+                <div className="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+                  {project.image && project.image !== '/api/placeholder/400/250' ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center h-full">
+                      <CategoryIcon className="w-16 h-16 text-gray-600" />
+                    </div>
+                  )}
                 </div>
                 
                 <div className="p-6">
@@ -105,6 +107,7 @@ const Projects = () => {
                   </div>
                   
                   <div className="flex space-x-4">
+                    {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
@@ -114,6 +117,7 @@ const Projects = () => {
                       <Github size={20} className="mr-2" />
                       Code
                     </a>
+                    )}
                     {project.live && (
                       <a
                         href={project.live}
