@@ -66,8 +66,8 @@ const About = () => {
         {
           icon: '🌐',
           title: 'TrinHub',
-          description: 'Created school club management platform (hub.trinlabs.com)',
-          link: 'https://hub.trinlabs.com'
+          description: 'Created school club management platform (hub.trinlabs.club)',
+          link: 'https://hub.trinlabs.club'
         },
         {
           icon: '🏷️',
@@ -101,6 +101,11 @@ const About = () => {
           title: 'United States of America Informatics Olympiad in Teams (USIOT)',
           period: 'April 2025',
           description: '4th Place Team'
+        },
+        {
+          title: 'Alumni Award (Water Polo)',
+          period: 'November 2025',
+          description: 'For leadership, commitment, and outstanding contribution to the water polo team throughout high school.'
         },
       ]
     },

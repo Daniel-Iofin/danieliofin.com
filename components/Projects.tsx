@@ -21,7 +21,7 @@ const Projects = () => {
       description: 'Developed my high school\'s first club management platform. An all-in-one solution for 150+ clubs, sends 10,000+ emails per month, and handles 100,000+ API requests per month.',
       image: '/api/placeholder/400/250',
       technologies: ['Next.js', 'TypeScript', 'Flask', 'PostgreSQL', 'Tailwind CSS', 'Node.js'],
-      live: 'https://hub.trinlabs.com',
+      live: 'https://hub.trinlabs.club',
       github: null,
       category: 'web'
     },
