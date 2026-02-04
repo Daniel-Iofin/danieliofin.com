@@ -1,0 +1,11 @@
+import{c,j as t}from"./createLucideIcon.KCatS9Yk.js";import{r as s}from"./index.CaZlGE7t.js";/**
+ * @license lucide-react v0.294.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const x=c("Menu",[["line",{x1:"4",x2:"20",y1:"12",y2:"12",key:"1e0a9i"}],["line",{x1:"4",x2:"20",y1:"6",y2:"6",key:"1owob3"}],["line",{x1:"4",x2:"20",y1:"18",y2:"18",key:"yk5zj1"}]]);/**
+ * @license lucide-react v0.294.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const m=c("X",[["path",{d:"M18 6 6 18",key:"1bl5f8"}],["path",{d:"m6 6 12 12",key:"d8bk6v"}]]),b=()=>{const[n,r]=s.useState(!1),[i,d]=s.useState(!1);s.useEffect(()=>{const e=()=>{d(window.scrollY>50)};return window.addEventListener("scroll",e),()=>window.removeEventListener("scroll",e)},[]);const o=[{name:"About",href:"#about"},{name:"Projects",href:"#projects"},{name:"Contact",href:"#contact"}],a=e=>{const l=document.querySelector(e);l&&l.scrollIntoView({behavior:"smooth"}),r(!1)};return t.jsx("nav",{className:`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${i?"bg-background/80 backdrop-blur-md border-b border-gray-800":"bg-transparent"}`,children:t.jsxs("div",{className:"container-max px-4 py-9 sm:px-6 lg:px-8",children:[t.jsxs("div",{className:"flex items-center justify-between",children:[t.jsx("div",{className:"text-xl font-bold gradient-text",children:"Daniel Iofin"}),t.jsx("div",{className:"hidden md:flex items-center space-x-8",children:o.map(e=>t.jsx("button",{onClick:()=>a(e.href),className:"text-gray-300 hover:text-white transition-colors duration-200",children:e.name},e.name))}),t.jsx("button",{onClick:()=>r(!n),className:"md:hidden text-gray-300 hover:text-white transition-colors duration-200",children:n?t.jsx(m,{size:24}):t.jsx(x,{size:24})})]}),n&&t.jsx("div",{className:"md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-gray-800",children:t.jsx("div",{className:"flex flex-col space-y-3 py-7",children:o.map(e=>t.jsx("button",{onClick:()=>a(e.href),className:"text-gray-300 hover:text-white transition-colors duration-200 px-4 py-2 text-left",children:e.name},e.name))})})]})})};export{b as default};
