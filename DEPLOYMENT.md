@@ -1,11 +1,12 @@
 # GitHub Pages Deployment Guide
 
-This guide explains how to deploy your Next.js website to GitHub Pages.
+This guide explains how to deploy your Astro website to GitHub Pages.
 
 ## Prerequisites
 
-1. Your repository is named `danieliofin.com` (or update the basePath in `next.config.js`)
+1. Your repository is named `danieliofin.com`
 2. You have GitHub Pages enabled in your repository settings
+3. Astro is configured with `output: 'static'` in `astro.config.mjs`
 
 ## Setup GitHub Pages
 
@@ -36,10 +37,9 @@ npm run build:static
 
 The project is configured for GitHub Pages with:
 
-- **Base Path**: `/danieliofin.com` (for production)
-- **Static Export**: Enabled for static hosting
-- **Trailing Slashes**: Enabled for better compatibility
-- **Unoptimized Images**: Enabled for static export
+- **Output**: Static site generation (`output: 'static'` in `astro.config.mjs`)
+- **Base Path**: Root path (configured automatically for GitHub Pages)
+- **Static Assets**: Served from the `dist/` directory
 
 ## Troubleshooting
 
@@ -54,15 +54,15 @@ The project is configured for GitHub Pages with:
 - Review the build logs in the GitHub Actions tab
 
 ### Assets not loading
-- Verify the `assetPrefix` is correctly set in `next.config.js`
-- Check that the basePath matches your repository name
+- Verify static assets are in the `public/` directory
+- Check that the build output is in the `dist/` directory
 
 ## Local Development
 
-For local development, the basePath is automatically disabled:
+For local development:
 
 ```bash
 npm run dev
 ```
 
-This will run the site at `http://localhost:3000` without the GitHub Pages base path. 
+This will run the site at `http://localhost:4321`. 
