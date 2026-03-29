@@ -6,16 +6,29 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#0a0a0a',
-        foreground: '#ffffff',
-        primary: '#3b82f6',
-        secondary: '#64748b',
+        background: '#fafaf8',
+        foreground: '#1a1a1a',
+        muted: '#3d3d3d',
+        border: '#1a1a1a',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        serif: ['Georgia', 'Times New Roman', 'Times', 'serif'],
+        sans: [
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+      },
+      maxWidth: {
+        column: '680px',
       },
     },
   },
   plugins: [],
-} 
+}
