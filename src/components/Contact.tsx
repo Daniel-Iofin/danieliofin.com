@@ -11,14 +11,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/Daniel-Iofin' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/daniel-iofin' },
-    { name: 'Twitter', url: 'https://twitter.com/danieliofin' },
-    { name: 'Instagram', url: 'https://instagram.com/daniel.e.io' },
-    { name: 'Email', url: 'mailto:hi@danieliofin.com' },
-  ]
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -62,17 +54,6 @@ const Contact = () => {
         <p className="mt-10 text-foreground">
           I'm always interested in hearing about new opportunities and exciting projects. Whether you have a question
           or just want to say hi, feel free to reach out!
-        </p>
-
-        <p className="mt-8 text-foreground">
-          {socialLinks.map((link, i) => (
-            <span key={link.name}>
-              {i > 0 ? ' ' : null}
-              <a href={link.url} target="_blank" rel="noopener noreferrer" className="site-link">
-                {link.name}
-              </a>
-            </span>
-          ))}
         </p>
 
         <form onSubmit={handleSubmit} className="mt-14 space-y-6 border-t border-foreground/20 pt-14">

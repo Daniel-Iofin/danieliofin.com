@@ -27,6 +27,12 @@ const Hero = () => {
           </a>{' '}
           <a href="mailto:daniel@danieliofin.com" className="site-link">
             Email
+          </a>{' '}
+          <a href="https://instagram.com/daniel.e.io" className="site-link">
+            Instagram
+          </a>{' '}
+          <a href="https://x.com/danieliofin" className="site-link">
+            X.com
           </a>
         </p>
       </div>
